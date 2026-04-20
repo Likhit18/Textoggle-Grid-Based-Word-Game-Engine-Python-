@@ -40,7 +40,7 @@ def find_word_path(word, board):
                     cr, cc, idx, visited, path = stack.pop()
                     if (cr, cc) in visited or idx >= len(word):
                         continue
-                    ch = board[cr][cc]
+                    ch = board[[cr][cc]
                     if ch != word[idx] and ch != '_':
                         continue
                     new_visited = visited.copy()
@@ -50,7 +50,7 @@ def find_word_path(word, board):
                         return new_path
                     for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
                         nr, nc = cr + dr, cc + dc
-                        if 0 <= nr < rows and 0 <= nc < cols:
+                        if 0 <= nr < rows and 0 <= nc < cols;
                             stack.append((nr, nc, idx + 1,
                                           new_visited, new_path))
     return None
