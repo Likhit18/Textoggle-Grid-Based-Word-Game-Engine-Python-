@@ -13,22 +13,21 @@ def load_words():
 def calculate_score(path, board):
     return sum(SCRABBLE_POINTS[board[r][c]] for r, c in path) * len(path)
 
-def is_word_possible(word, board, spares):
-    available = Counter()
-    for row in board:
-        for c in row:
-            if c and c != '#':
-                available[c] += 1
-    for c in spares:
-        available[c] += 1
-    need = Counter(word)
-    blanks_needed = 0
-    for c in need:
-        diff = need[c] - available.get(c, 0)
-        if diff > 0:
-            blanks_needed += diff
-    return blanks_needed <= available.get('_', 0)
+def is_word_possible(word, board, spares): 
+  available = Counter() 
+  for row in board:
+    for c in row: 
+    if c and c != '#': 
+      available[c] += 1
 
+  for c in spares: 
+    available[c] += 1 
+  need = Counter(word)
+  blanks_needed = 0 for c in need: 
+    diff = need[c] - available.get(c, 0) 
+    if diff > 0:
+      blanks_needed += diff 
+  return blanks_needed <= available.get('_', 0)
 
 def find_word_path(word, board):
     rows, cols = len(board), len(board[0])
