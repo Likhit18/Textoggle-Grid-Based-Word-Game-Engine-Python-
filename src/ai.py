@@ -5,16 +5,13 @@ SCRABBLE_POINTS = {**{c: 1 for c in "EAIONRTLSU"}, **{c: 2 for c in "DG"},
                    **{c: 3 for c in "BCMP"}, **{c: 4 for c in "FHVWY"},
                    "K": 5, "J": 8, "X": 8, "Q": 10, "Z": 10, "_": 0}
 
-
 def load_words():
     with open("words_alpha.txt") as f:
         return [word.strip().upper() for word in f
                 if len(word.strip()) >= 2]
 
-
 def calculate_score(path, board):
     return sum(SCRABBLE_POINTS[board[r][c]] for r, c in path) * len(path)
-
 
 def is_word_possible(word, board, spares):
     available = Counter()
